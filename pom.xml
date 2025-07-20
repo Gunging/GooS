@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+
+    <!-- Identifying Information of the Project -->
+    <groupId>io.github.Gunging</groupId>
+    <artifactId>gungingoos</artifactId>
+    <version>1.0.0</version>
+    <name>GooSuite</name>
+    <description>An ambitious suite that aims to provide ootiliites for all platforms. </description>
+    <url>https://github.com/Gunging/GooS</url>
+
+    <!-- Maven Module structure for Unlimited Compatibility -->
+    <modules>
+        <module>GooB</module>
+        <module>GooF</module>
+        <module>GooP</module>
+    </modules>
+
+    <!-- Maven Project Variables -->
+    <properties>
+
+        <!-- For years this remained GooP 1.6.4-dev, because that is the file in my system
+             that was obfuscated by the obfuscation tool I used when I still obfuscated
+             GooP. However, as of version 1.10.9-103dev, I have finally changed it since
+             it's been years that I stopped obfuscating GooP anyway :B -->
+        <goos.version>1.0.0</goos.version>
+
+        <!-- The dev version, highest being 105 after three years of no GooP releases LMAO -->
+        <goos.devversion>000</goos.devversion>
+
+        <!-- The date to be used when naming the file -->
+        <maven.build.timestamp.format>yyyy.MM.dd</maven.build.timestamp.format>
+        <goos.date>${maven.build.timestamp}</goos.date>
+
+        <!-- Java version stuff -->
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <!-- Default Versions of Common Dependencies -->
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- GooSuite Base -->
+            <dependency>
+                <groupId>io.github.Gunging</groupId>
+                <artifactId>gungingoob</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+
+            <!-- Jetbrains Annotations -->
+            <dependency>
+                <groupId>org.jetbrains</groupId>
+                <artifactId>annotations</artifactId>
+                <version>24.0.0</version>
+                <scope>compile</scope>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
+
+    <!-- Actual Dependencies -->
+    <dependencies>
+
+        <!-- Jetbrains Annotations -->
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <!-- Build the GooSuite, yes! -->
+    <build>
+
+        <!-- The age of information allows us to name the jars automatically -->
+        <finalName>${project.name}-v${project.version}_${goos.date}-${goos.devversion}dev</finalName>
+        <defaultGoal>package</defaultGoal>
+
+        <!-- I only really care about compiling it, manual distribution suffices -->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

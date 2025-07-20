@@ -1,0 +1,167 @@
+################## MMOItems Converter ##################################################
+################## Items will preserve most nbt tags upon conversion.
+################## Tested and Working: Display Name, Enchantments, Attribute Modifiers.
+
+##############
+############## Enabling this will convert items into MMOItems:
+############## - When crafting
+############## - When picking them up
+
+########
+######## You must specify what kind of items to convert.
+
+
+
+
+#Convert_Into_MMOItems:
+#  - ALL      # Stands for all the following:
+
+### General Types
+#  - ARMOUR   # Will convert armour   - MMOItem Type ARMOR
+#  - WHIP     # Will convert leads    - MMOItem Type WHIP
+#  - TOOL     # Will convert tools    - MMOItem Type TOOL
+#  - SHIELD   # Will convert shields  - MMOItem Type SHIELD (not default, you must create this type)
+#  - WEAPONS  # Will convert weapons. Stands for all the following:
+
+### If you dont want to convert all weapons, you can use these separately instead of WEAPONS
+#  - SWORD      # - MMOItem Type SWORD
+#  - AXE        # - MMOItem Type AXE
+#  - BOW        # - MMOItem Type BOW
+#  - CROSSBOW   # - MMOItem Type CROSSBOW
+#  - TRIDENT    # - MMOItem Type SPEAR
+
+
+
+# ---------------------------- MMOItems_Type_Prefix
+#   For example, converting some iron boots.
+#
+#   By default, they will be converted into the MMOItem Type ARMOR,
+#   but if you specify a Type Prefix (for example, "MAKESHIFT_"),
+#   you can redirect them (to "MAKESHIFT_ARMOR").
+#
+#   This applies to all, such that swords and pickaxes will also
+#   be affected (sent to "MAKESHIFT_SWORD" and "MAKESHIFT_TOOL")
+#
+MMOItems_Type_Prefix: ""
+
+# ---------------------------- Differentiate_Items
+#   Advanced Item Conversion.
+#
+#   By default, all items will have MMOItems ID "VANILLA"
+#   If you enable this, their MMOItems ID will be set to the following:
+#       "GENERIC_{EQUIPMENT}_{MATERIAL}_{TIER}"
+#
+#   If a MMOItem of the matching Type and ID is found, the Converter will
+#   fetch that item from /mmoitems browse, and give it to the player.
+#
+#   The converter will no longer perform operations, and you must edit that
+#   mmoitem itself with /mmoitems edit
+#
+#   That is, when crafting tierless iron boots, the converted MMOItem will be:
+#       /mmoitems edit ARMOR GENERIC_BOOTS_IRON
+#
+#   If you specify a tier, it will be added at the end:
+#       /mmoitems edit ARMOR GENERIC_BOOTS_IRON_EPIC
+#
+Differentiate_Items: false
+
+# ---------------------------- Generate_Templates
+#   Advanced Item Conversion, use with Differentiate_Items option enabled.
+#
+#   Will create MMOItem templates that would match Differentiate_Items' IDs
+#   if they don't yet exist.
+#
+Generate_Templates: false
+
+# ---------------------------- OverrideConverterTypes
+#   Advanced Item Conversion, allows to convert any items.
+#   Any material specified here will be converted by the MMOItems converter,
+#   not included in the 'ALL' category, they fall in the 'MISC' category.
+#
+#   Format:
+#       '[Material] [Type]'
+#
+#   Example:
+#       'GOLDEN_APPLE CONSUMABLE'
+#       Will convert Golden Apples into 'Consumable' MMOItem Type: m CONSUMABLE GENERIC_GOLDEN_APPLE
+#
+#   _____
+#   Also allows to specify IDs
+#       '[Material] [Type].[Id]'
+#
+#   Example:
+#       'END_ROD MISCELLANEOUS.SUPREME_ROD'
+#       Will convert End Rods MMOItems: m MISCELLANEOUS SUPREME_ROD
+#
+###
+###OverrideConverterTypes:
+###  - 'charcoal MISCELLANEOUS'
+###  - 'eNd_RoD ARMOR.UNICORN_HORN'
+###
+
+# (When differentiating items)
+# Which of these to transfer when smithing diamond gear into netherite?
+Smithing:
+  Enchantments: true
+  Upgrades: true
+  Gems: true
+
+# ---------------------------- Allow_MythicItems
+#   Should Mythic Items go through the converter (and become MMOItems)?
+#
+#   Set to 'false' to ignore Mythic Items. They must have
+#   their type appended to be detectable though:
+#
+#   GOOP_MYTHIC_ITEM:
+#     Id: chainmail_boots
+#     Display: '&8The Shroomsteps'
+#     Options:
+#       AppendType: true
+#
+Allow_MythicItems: true
+
+#####
+##### You may specify a few conversion settings, and when to apply ( OnCraft / OnPickup / OnLootGen / OnTrade )
+#####
+###
+###  [CATEGORY]:
+###    OnCraft:
+###      Tier:
+###        - COMMON 36
+###        - UNCOMMON 6
+###        - RARE 3
+###        - EPIC 1
+###    OnPickup:
+###      Tier:
+###        - UNCOMMON 80
+###        - RARE 3
+###        - EPIC 3
+###    OnLootGen: # ex. Looting End City chests
+###      Tier:
+###        - RARE 5
+###        - EPIC 3
+###    OnDrop:  # ex. Zombie drops held weapon
+###      Tier:
+###        - RARE 5
+###        - EPIC 3
+###    OnTrade: # ex. Sold by Villager
+###      Tier:
+###        - COMMON 18
+###        - UNCOMMON 5
+###        - RARE 1
+###      UNCOMMON:
+###        Price: '1500%'
+###      RARE:
+###        Price: 'm MATERIAL FIRE_ESSENCE 200%'
+###
+###
+###
+###  AXE:
+###    OnCraft:
+###      Tier:
+###      - COMMON 3
+###      - UNCOMMON 3
+###      - RARE 3
+###      - EPIC 3
+###      Epic:
+###      - attack-damage: +4

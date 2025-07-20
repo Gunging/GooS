@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+
+    <!-- Relation to parent project -->
+    <parent>
+        <groupId>io.github.Gunging</groupId>
+        <artifactId>gungingoos</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <!-- Supported Platforms -->
+    <modules>
+        <module>GooFSpigot</module>
+        <module>GooFPaper</module>
+    </modules>
+
+    <!-- Identification of this module -->
+    <artifactId>gungingoof</artifactId>
+    <version>1.0.0</version>
+    <name>GooFoundation</name>
+    <description>Essentially, the platform-dependent implementation of wrappers. </description>
+
+    <!-- Dependencies -->
+    <dependencies>
+
+        <!-- GooSuite Base -->
+        <dependency>
+            <groupId>io.github.Gunging</groupId>
+            <artifactId>gungingoob</artifactId>
+        </dependency>
+
+    </dependencies>
+</project>

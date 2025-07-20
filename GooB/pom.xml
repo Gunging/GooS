@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>jar</packaging>
+
+    <!-- Relation to parent project -->
+    <parent>
+        <groupId>io.github.Gunging</groupId>
+        <artifactId>gungingoos</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <!-- Identification of this module -->
+    <artifactId>gungingoob</artifactId>
+    <version>1.0.0</version>
+    <name>GooBase</name>
+    <description>The most abstract and fundamental version and platform independent ootilities. </description>
+    <url>https://github.com/Gunging/GooS</url>
+
+    <!-- Repositories -->
+    <repositories>
+
+        <!-- Old Reliable Jitpack -->
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <!-- Dependencies -->
+    <dependencies>
+
+        <!-- Delicious Math Expressions -->
+        <dependency>
+            <groupId>net.objecthunter</groupId>
+            <artifactId>exp4j</artifactId>
+            <version>0.4.8</version>
+        </dependency>
+
+    </dependencies>
+</project>
