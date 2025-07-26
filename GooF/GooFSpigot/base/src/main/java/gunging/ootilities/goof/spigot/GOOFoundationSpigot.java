@@ -11,7 +11,7 @@ import gunging.ootilities.goof.spigot.engine.minecraft.*;
 import gunging.ootilities.goof.spigot.exploring.entities.ISESpigotStatements;
 import gunging.ootilities.goof.spigot.exploring.players.ISPSpigotStatements;
 import gunging.ootilities.goof.spigot.ootilities.friendly.SpigotConsoleReproducer;
-import org.bukkit.Server;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -22,18 +22,18 @@ import org.jetbrains.annotations.NotNull;
  * @author Gunging
  * @since 1.0.0
  */
-public abstract class GOOFoundationSpigot extends GOOBMinecraft implements GOOBDuallyInitializable<Server>, GOOBDisableShutdown<Server> {
+public abstract class GOOFoundationSpigot extends GOOBMinecraft implements GOOBDuallyInitializable<JavaPlugin>, GOOBDisableShutdown<JavaPlugin> {
 
     /**
      * @param engine The engine this foundation is part of.
-     * @param server The Minecraft Server where this foundation is running on.
+     * @param plugin The Minecraft Server where this foundation is running on.
      *
      * @author Gunging
      * @since 1.0.0
      */
-    public GOOFoundationSpigot(@NotNull GOOBEngine engine, @NotNull Server server) {
+    public GOOFoundationSpigot(@NotNull GOOBEngine engine, @NotNull JavaPlugin plugin) {
         super(engine);
-        this.server = server;
+        this.plugin = plugin;
     }
 
     /**
@@ -41,13 +41,13 @@ public abstract class GOOFoundationSpigot extends GOOBMinecraft implements GOOBD
      *
      * @since 1.0.0
      */
-    @NotNull Server server;
+    @NotNull JavaPlugin plugin;
 
     /**
      * @author Gunging
      * @since 1.0.0
      */
-    public @NotNull Server getServer() { return server; }
+    public @NotNull JavaPlugin getPlugin() { return plugin; }
 
     //region Wrappers
     /**

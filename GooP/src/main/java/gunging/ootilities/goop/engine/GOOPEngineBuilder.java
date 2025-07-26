@@ -3,7 +3,7 @@ package gunging.ootilities.goop.engine;
 import gunging.ootilities.goob.ootilities.friendly.FriendlyFeedbackProvider;
 import gunging.ootilities.goof.spigot.GOOFSpigot;
 import gunging.ootilities.goof.spigot.GOOFSpigotHook;
-import org.bukkit.Server;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -17,13 +17,13 @@ import org.jetbrains.annotations.Nullable;
 public class GOOPEngineBuilder {
 
     /**
-     * @param environment The minecraft server and plugins environment
+     * @param plugin The minecraft server and plugins environment
      * @return A GOOPEngine for this environment, if one could be built
      *
      * @author Gunging
      * @since 2.0.0
      */
-    @Nullable public static GOOPEngine build(@NotNull Server environment) {
+    @Nullable public static GOOPEngine build(@NotNull JavaPlugin plugin) {
 
         // Begin with an empty one
         GOOPEngine build = new GOOPEngine();
@@ -32,7 +32,7 @@ public class GOOPEngineBuilder {
         //todo Try both Spigot and Paper foundations, with preference for Paper of course
 
         // Try to build the spigot foundation
-        final GOOFSpigot foundation = new GOOFSpigotHook().hookOnLoad(build, environment, ffp);
+        final GOOFSpigot foundation = new GOOFSpigotHook().hookOnLoad(build, plugin, ffp);
         if (foundation == null) { return null; }
 
         // Must be reproduced manually since we are only initializing it now

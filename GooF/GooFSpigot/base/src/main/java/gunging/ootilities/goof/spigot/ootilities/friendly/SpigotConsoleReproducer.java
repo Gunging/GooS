@@ -141,7 +141,7 @@ public class SpigotConsoleReproducer implements FriendlyReproducer, GOOBFuel, GO
 
         // Parse the message
         String parsed = message.getMessage(consolePalette);
-        getMinecraft().getServer().getConsoleSender().sendMessage(parsed);
+        getMinecraft().getPlugin().getServer().getConsoleSender().sendMessage(parsed);
 
         // Send to players too
         if (getDevLoggers().size() > 0) {

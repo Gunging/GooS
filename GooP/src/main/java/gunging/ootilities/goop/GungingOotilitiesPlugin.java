@@ -49,7 +49,7 @@ public class GungingOotilitiesPlugin extends JavaPlugin {
          * CustomGooPEngine myEngine = new CustomGooPEngine();
          * GungingOotilitiesBase.setEngine(myEngine);
          */
-        engine = GOOPEngineBuilder.build(getServer());
+        engine = GOOPEngineBuilder.build(this);
 
         // If it is null, GooP failed to load.
         if (engine == null) {
@@ -62,7 +62,7 @@ public class GungingOotilitiesPlugin extends JavaPlugin {
 
         // Initialize
         FriendlyFeedbackProvider ffp = getGooP().getOotilityFriend().newFFPAuto();
-        getGooP().initializeOnLoad(getServer(), ffp);
+        getGooP().initializeOnLoad(this, ffp);
     }
 
     /**
@@ -79,7 +79,7 @@ public class GungingOotilitiesPlugin extends JavaPlugin {
 
         // Enable
         FriendlyFeedbackProvider ffp = getGooP().getOotilityFriend().newFFPAuto();
-        getGooP().initializeOnEnable(getServer(), ffp);
+        getGooP().initializeOnEnable(this, ffp);
     }
 
     /**
@@ -96,6 +96,6 @@ public class GungingOotilitiesPlugin extends JavaPlugin {
 
         // Enable
         FriendlyFeedbackProvider ffp = getGooP().getOotilityFriend().newFFPAuto();
-        getGooP().shutdownOnDisable(getServer(), ffp);
+        getGooP().shutdownOnDisable(this, ffp);
     }
 }

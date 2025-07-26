@@ -4,7 +4,7 @@ import gunging.ootilities.goob.engine.GOOBEngine;
 import gunging.ootilities.goob.ootilities.OotilityFriend;
 import gunging.ootilities.goob.ootilities.friendly.FriendlyFeedbackCategory;
 import gunging.ootilities.goob.ootilities.friendly.FriendlyFeedbackProvider;
-import org.bukkit.Server;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -24,13 +24,13 @@ public class GOOFSpigot extends GOOFoundationSpigot {
      * @author Gunging
      * @since 1.0.0
      */
-    public GOOFSpigot(@NotNull GOOBEngine engine, @NotNull Server server) { super(engine, server); }
+    public GOOFSpigot(@NotNull GOOBEngine engine, @NotNull JavaPlugin server) { super(engine, server); }
 
     /**
      * @author Gunging
      * @since 1.0.0
      */
-    @Override public boolean initializeOnLoad(@NotNull Server server, @Nullable FriendlyFeedbackProvider ffp) {
+    @Override public boolean initializeOnLoad(@NotNull JavaPlugin server, @Nullable FriendlyFeedbackProvider ffp) {
         OotilityFriend.Log(ffp, FriendlyFeedbackCategory.INFORMATION, "Initializing GooFoundation:$d Spigot$b... ");
 
         // todo Load version-dependent wrappers
@@ -43,7 +43,7 @@ public class GOOFSpigot extends GOOFoundationSpigot {
      * @author Gunging
      * @since 1.0.0
      */
-    @Override public boolean initializeOnEnable(@NotNull Server server, @Nullable FriendlyFeedbackProvider ffp) {
+    @Override public boolean initializeOnEnable(@NotNull JavaPlugin server, @Nullable FriendlyFeedbackProvider ffp) {
         OotilityFriend.Log(ffp, FriendlyFeedbackCategory.INFORMATION, "Enabling GooFoundation:$d Spigot$b... ");
 
         // todo Plugin enable stuff
@@ -56,7 +56,7 @@ public class GOOFSpigot extends GOOFoundationSpigot {
      * @author Gunging
      * @since 1.0.0
      */
-    @Override public void shutdownOnDisable(@NotNull Server server, @Nullable FriendlyFeedbackProvider ffp) {
+    @Override public void shutdownOnDisable(@NotNull JavaPlugin server, @Nullable FriendlyFeedbackProvider ffp) {
         OotilityFriend.Log(ffp, FriendlyFeedbackCategory.INFORMATION, "Shutting down GooFoundation:$d Spigot$b... ");
 
         // todo Plugin disable stuff

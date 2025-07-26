@@ -8,6 +8,7 @@ import gunging.ootilities.goob.ootilities.OotilityMinecraft;
 import gunging.ootilities.goob.ootilities.friendly.FriendlyFeedbackProvider;
 import gunging.ootilities.goof.spigot.GOOFoundationSpigot;
 import org.bukkit.Server;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -19,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
  * @author Gunging
  * @since 2.0.0
  */
-public class GOOPEngine extends GOOBEngine implements GOOBDuallyInitializable<Server>, GOOBDisableShutdown<Server> {
+public class GOOPEngine extends GOOBEngine implements GOOBDuallyInitializable<JavaPlugin>, GOOBDisableShutdown<JavaPlugin> {
 
     /**
      * @author Gunging
@@ -37,7 +38,7 @@ public class GOOPEngine extends GOOBEngine implements GOOBDuallyInitializable<Se
      * @author Gunging
      * @since 2.0.0
      */
-    @Override public boolean initializeOnLoad(@NotNull Server server, @Nullable FriendlyFeedbackProvider ffp) {
+    @Override public boolean initializeOnLoad(@NotNull JavaPlugin server, @Nullable FriendlyFeedbackProvider ffp) {
 
         // The GooFoundation takes care of actual initialization lol
         return getMinecraft().initializeOnLoad(server, ffp);
@@ -47,7 +48,7 @@ public class GOOPEngine extends GOOBEngine implements GOOBDuallyInitializable<Se
      * @author Gunging
      * @since 2.0.0
      */
-    @Override public boolean initializeOnEnable(@NotNull Server server, @Nullable FriendlyFeedbackProvider ffp) {
+    @Override public boolean initializeOnEnable(@NotNull JavaPlugin server, @Nullable FriendlyFeedbackProvider ffp) {
 
         // The GooFoundation takes care of actual enabling lol
         return getMinecraft().initializeOnEnable(server, ffp);
